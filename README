@@ -1,0 +1,10 @@
+Python packages requirements:
+	- shapely
+	- numpy
+
+Python version: 2.7
+
+1. Download the zip file http://www.efehr.org/export/sites/efehr/.galleries/dwl_europe2013/SHARE_OQ_input_20140807.zip
+2. Place it in the same folder as the scripts (for now, this must be changed)
+3. Unzip it
+4. Run the script(s)
