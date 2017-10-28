@@ -8,3 +8,5 @@ Python version: 2.7
 2. Place it in the same folder as the scripts (for now, this must be changed)
 3. Unzip it
 4. Run the script(s)
+
+so far the filters could be refactored into one single script called on the three model files, but low priority

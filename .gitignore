@@ -1,4 +1,7 @@
 SHARE
 .DS_Store
 *.pkl
+*.pyc
+SHARE_OQ_input_20140807.zip
+SHARE_OQ_input_20140807/*
 
