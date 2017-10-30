@@ -79,6 +79,10 @@ def area_source(source):
 
 	p = Polygon(src["geometry"])
 
+	updpt = float(geom.find(URI + "upperSeismoDepth").text)
+	lwdpt = float(geom.find(URI + "lowerSeismoDepth").text)
+	src["depth"] = (updpt, lwdpt)
+
 	hdd = source.find(URI + "hypoDepthDist")
 	if len(hdd) > 1:
 		raise ValueError("weird hyp depth distr")		
@@ -114,6 +118,10 @@ def point_source(source):
 	src["geometry"] = [(lns, lts)]
 
 	p = Point(src["geometry"])
+
+	updpt = float(geom.find(URI + "upperSeismoDepth").text)
+	lwdpt = float(geom.find(URI + "lowerSeismoDepth").text)
+	src["depth"] = (updpt, lwdpt)
 
 	hdd = source.find(URI + "hypoDepthDist")		
 	src["hdd"] = [{k:float(v) for k,v in h.attrib.iteritems()} for h in hdd]
