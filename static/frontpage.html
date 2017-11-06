@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.4.2/css/ol.css" type="text/css"></link>
+    <link rel="stylesheet" href="static/my.css" type="text/css"></link>
+    <script src="https://openlayers.org/en/v4.4.2/build/ol.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Rischio Sismico</title>
+</head>
+<body onload="onLoad()">
+
+<p>CHOOSE A LOCATION</p>
+
+<div id="map" class="map" style="height:500px; padding-bottom:30px"></div>
+<div id="riskStats" class="mydiv">
+    <p>LOCAL HAZARD RISK</p> 
+    <table style="width:100%">
+        <tr>
+            <td style="width:33.3333%"> <div id="plot_pie" ></div> </td>
+            <td style="width:33.3333%"> <div id="plot_poe" ></div> </td>
+            <td> <div id="plot_rp" ></div> </td>
+        </tr>
+    </table>
+</div>
+<div id="selectHome" class="mydiv">
+    <p>SELECT YOUR HOUSE</p>
+    <div class="select-style" style="float:left; width:60%">
+        <select id="selectHomeDropdown"><option disabled selected>Select building type</option></select>
+    </div>
+    <!-- div style="height:5px"></div -->
+    <button class=mybutton onclick="computeRisk()" style="float:right; width:38%">COMPUTE RISK</button>
+    <div id="plot_hist" style="margin-top:100px"></div>
+</div>
+</body>
+<footer>
+    <script src="static/my.js"></script>
+</footer>
+</html>

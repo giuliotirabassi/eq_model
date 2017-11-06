@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+    font-family: Raleway;
+}
+
+
+
+h1 {
+    text-align: center;
+}
+
+p {
+    font-family: Raleway;
+    font-size: 20px;
+}
+
+.mydiv {
+    width: auto;
+    padding-left:20px;
+    padding-right:20px;
+    border-top-style: solid;
+    border-top-width:1px;
+}
+
+.mybutton{
+    width:20%;
+    height:50px;
+    font-family:Raleway;
+    color: white;
+    font-size:18px;  
+    background-color:#de2d26;
+    border: none;
+    display: inline-block;
+}
+
+.select-style {
+    border: 1px solid #ccc;
+    width: 50%;
+    height:50px;
+    border-radius: 3px;
+    font-family:Raleway;
+    font-size:14px;  
+    overflow: hidden;
+    background: #fafafa  url("http://i62.tinypic.com/15xvbd5.png") no-repeat 90% 50%;
+    display: inline-block;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 105%;
+    font-family:Raleway;
+    font-size:14px;  
+    height:50px;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
