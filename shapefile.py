@@ -2,6 +2,7 @@ from shapely.geometry import Polygon
 import pandas as pd
 from scipy.interpolate import interp1d
 import json
+import numpy as np
 
 df = pd.read_csv("/Users/giuliotirabassi/Downloads/output-10-hcurves-csv/CentralItaly_PGA_PoEat50years.csv")
 
@@ -59,13 +60,14 @@ for binp, p in united_polygons.iteritems():
     if p.type == "Polygon":
         coordinates = [p.boundary.coords[:]]
     else:
-        coordinates = [b.coords[:] for b in p.boundary]
+        coordinates = [[pp.boundary.coords[:]] if pp.boundary.type=="LineString" else [ppp.coords[:] for ppp in pp.boundary] for pp in p]
     label = pga_bins[binp]
     centerpga = np.mean([float(x) for x in label.split("-")])
+
     feature = {
           "type": "Feature",
           "geometry": {
-            "type": "Polygon",
+            "type": p.type,
             "coordinates": coordinates
           },
           "properties": {

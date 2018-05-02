@@ -286,6 +286,27 @@ function computeRisk(){
 
 
 
+var styleFunction = function(feature) {
+        pga = feature.getProperties().centerpga
+        var norm = 1 
+        var fraction = Math.floor((pga/norm) * _magma_data.length)
+        var coltuple = _magma_data[_magma_data.length - fraction -1]
+        var colfill = [coltuple[0]*255, coltuple[1]*255, coltuple[2]*255, 0.7]
+        var colstroke = [coltuple[0]*255, coltuple[1]*255, coltuple[2]*255, 0.35]
+        var color = colfill
+        var colorstroke = colstroke
+        var style = new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: colorstroke,
+            width: 0
+          }),
+          fill: new ol.style.Fill({
+            color: color
+          })
+        })
+        return style;
+      };
+
 function onLoad(){
   el = document.getElementById("selectHome")
   el.style.display="none"
@@ -298,6 +319,18 @@ function onLoad(){
       }
       document.getElementById("selectHomeDropdown").innerHTML = select
     });
+  $.getJSON("/hazardmap",
+    function(geojsonObject){
+      hm = geojsonObject
+     vectorSource = new ol.source.Vector({
+        features: (new ol.format.GeoJSON()).readFeatures(geojsonObject, {featureProjection: "EPSG:3857"}),
+      });
+        vectorLayer = new ol.layer.Vector({
+        source: vectorSource,
+        style:styleFunction
+      });
+      map.addLayer(vectorLayer)
+   }); 
 }
 
 function argsort(a, b){
@@ -308,6 +341,13 @@ function argsort(a, b){
     .map(([, item]) => item); 
   return result
 }
+
+
+
+
+    
+
+
 
 
 _magma_data = [[0.001462, 0.000466, 0.013866],

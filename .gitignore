@@ -1,7 +1,9 @@
-SHARE
-.DS_Store
+*.qgs
+*.qgs~
 *.pkl
 *.pyc
-SHARE_OQ_input_20140807.zip
+*.zip
+.DS_Store
+SHARE/*
 SHARE_OQ_input_20140807/*
-
+static/.DS_Store

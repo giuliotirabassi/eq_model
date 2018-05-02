@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import numpy as np
 from scipy.interpolate import interp1d
 from scipy.integrate import quadrature
+import json
 
 def prob_damage_states(damfun, poecurve):
     pds = {}
@@ -99,6 +100,12 @@ if __name__ == "__main__":
     def get_dfs():
         data = sorted(damage_functions_vals.keys())
         app.logger.debug(data)
+        return jsonify(data)
+
+    @app.route("/hazardmap")
+    def get_hazardmap():
+        with open('hazard_map.geojson') as data_file:    
+            data = json.load(data_file)
         return jsonify(data)
 
     app.debug = True
